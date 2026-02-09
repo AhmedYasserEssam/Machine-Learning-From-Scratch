@@ -12,8 +12,8 @@ class LinearRegression:
         self.bias = 0
         for i in range(self.num_iter):
             y_predicted = np.dot(X, self.weights) + self.bias
-            dw = (1 / n_samples) * np.sum(2 * np.dot(X.T, y_predicted - Y))
-            db = (1 / n_samples) * np.sum(y_predicted - Y)
+            dw = (1 / n_samples) * np.dot(X.T, (y_predicted - y))
+            db = (1 / n_samples) * np.sum(y_predicted - y)
             self.weights -= self.lr * dw
             self.bias -= self.lr * db
     def predict(self, X):
@@ -57,4 +57,5 @@ if __name__ == "__main__":
     m1 = plt.scatter(X_train, y_train, color=cmap(0.9), s=10)
     m2 = plt.scatter(X_test, y_test, color=cmap(0.5), s=10)
     plt.plot(X, y_pred_line, color="black", linewidth=2, label="Prediction")
+
     plt.show()
